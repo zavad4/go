@@ -27,3 +27,5 @@ func handleTime(w http.ResponseWriter, req *http.Request) {
 		w.Write(jsonResponse)
 	}
 }
+
+//comment for commit Zavodovska
