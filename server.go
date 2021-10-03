@@ -7,6 +7,7 @@ import (
 	"time"
 )
 
+//defining structure for response
 type date struct {
 	Time string `json:"time"`
 }
