@@ -27,4 +27,4 @@ func handleTime(w http.ResponseWriter, req *http.Request) {
 	}
 }
 
-//comment for commit Zavodovska
+//comment for commit
