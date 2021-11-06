@@ -33,8 +33,8 @@ func converter(input []string) (string, error) {
 	if len(input) < 3 {
 		return "", fmt.Errorf("Unable to convert")
 	} else if len(input) == 3 {
-		var left = input[0]
-		var right = input[1]
+		var right = input[0]
+		var left = input[1]
 		var operator = input[2]
 		if contains(operators, operator) && isNumeric(left) && isNumeric(right) {
 			return fmt.Sprintf("%s %s %s", left, operator, right), nil
