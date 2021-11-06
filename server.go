@@ -7,7 +7,6 @@ import (
 	"time"
 )
 
-//defining structure for response
 type date struct {
 	Time string `json:"time"`
 }
@@ -28,4 +27,4 @@ func handleTime(w http.ResponseWriter, req *http.Request) {
 	}
 }
 
-//comment for commit
+
