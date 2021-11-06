@@ -74,3 +74,25 @@ func TestUnallowedChars(t *testing.T) {
 		assert.Equal(t, fmt.Errorf("Unable to convert"), err)
 	}
 }
+
+func TestPowThreeOperations(t *testing.T) {
+	res, err := PostfixToInfix("12 4 ^")
+	if assert.Nil(t, err) {
+		assert.Equal(t, "12 ^ 4", res)
+	}
+}
+
+func TestPowSevenOperations(t *testing.T) {
+	res, err := PostfixToInfix("34 2 + 4 ^ 8 -")
+	if assert.Nil(t, err) {
+		assert.Equal(t, "(((34 + 2) ^ 4) - 8)", res)
+	}
+}
+
+func TestLetters(t *testing.T) {
+	_, err := PostfixToInfix("3 b +")
+	assert.NotNil(t, err)
+	if assert.Error(t, err) {
+		assert.Equal(t, fmt.Errorf("Unable to convert"), err)
+	}
+}
