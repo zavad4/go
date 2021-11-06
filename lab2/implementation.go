@@ -59,8 +59,7 @@ func converter(input []string) (string, error) {
 
 func newConverter(input []string) (string, error) {
 	var operators = []string{"+", "-", "*", "/", "^"}
-	var s []string
-	s = append(s, " ")
+	var s = []string{}
 
 	if len(input) < 3 {
 		return "", fmt.Errorf("Unable to convert")
@@ -79,12 +78,14 @@ func newConverter(input []string) (string, error) {
 		if isNumeric(input[i]) {
 			s = append(s, input[i])
 		} else {
-			var op1 = input[len(input)-1]
-			input = remove(input, len(input)-1)
-			var op2 = input[len(input)-1]
-			input = remove(input, len(input)-1)
-			var operator = input[i]
-			if contains(operators, operator) {
+			var op1 = s[len(s)-1]
+			var op2 = s[len(s)-2]
+			s = remove(s, len(s)-1)
+			s = remove(s, len(s)-1)
+			if len(s) > 0 {
+				s = remove(s, len(s)-1)
+			}
+			if contains(operators, input[i]) {
 				s = append(s, fmt.Sprintf("(%s %s %s)", op2, input[i], op1))
 			} else {
 				return "", fmt.Errorf("Unable to convert")

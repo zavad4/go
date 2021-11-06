@@ -71,6 +71,6 @@ func TestUnallowedChars(t *testing.T) {
 	_, err := PostfixToInfix("5 2 , 7 =")
 	assert.NotNil(t, err)
 	if assert.Error(t, err) {
-	  assert.Equal(t, fmt.Errorf("Unable to convert"), err)
+		assert.Equal(t, fmt.Errorf("Unable to convert"), err)
 	}
 }
