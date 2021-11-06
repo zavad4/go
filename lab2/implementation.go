@@ -85,7 +85,7 @@ func newConverter(input []string) (string, error) {
 			if len(s) > 0 {
 				s = remove(s, len(s)-1)
 			}
-			if contains(operators, input[i]) {
+			if contains(operators, input[i]) && isNumeric(op2) && isNumeric(op1) {
 				s = append(s, fmt.Sprintf("(%s %s %s)", op2, input[i], op1))
 			} else {
 				return "", fmt.Errorf("Unable to convert")
