@@ -25,7 +25,7 @@ func contains(s []string, str string) bool {
 }
 
 func PostfixToInfix(input string) (string, error) {
-	return converter(strings.Split(input, " "))
+	return newConverter(strings.Split(input, " "))
 }
 
 func converter(input []string) (string, error) {
@@ -33,8 +33,8 @@ func converter(input []string) (string, error) {
 	if len(input) < 3 {
 		return "", fmt.Errorf("Unable to convert")
 	} else if len(input) == 3 {
-		var right = input[0]
-		var left = input[1]
+		var left = input[0]
+		var right = input[1]
 		var operator = input[2]
 		if contains(operators, operator) && isNumeric(left) && isNumeric(right) {
 			return fmt.Sprintf("%s %s %s", left, operator, right), nil
@@ -55,4 +55,42 @@ func converter(input []string) (string, error) {
 	} else {
 		return "", fmt.Errorf("Unable to convert")
 	}
+}
+
+func newConverter(input []string) (string, error) {
+	var operators = []string{"+", "-", "*", "/", "^"}
+	var s []string
+	s = append(s, " ")
+
+	if len(input) < 3 {
+		return "", fmt.Errorf("Unable to convert")
+	} else if len(input) == 3 {
+		var left = input[0]
+		var right = input[1]
+		var operator = input[2]
+		if contains(operators, operator) && isNumeric(left) && isNumeric(right) {
+			return fmt.Sprintf("%s %s %s", left, operator, right), nil
+		} else {
+			return "", fmt.Errorf("Unable to convert")
+		}
+	}
+
+	for i := 0; i < len(input); i++ {
+		if isNumeric(input[i]) {
+			s = append(s, input[i])
+		} else {
+			var op1 = input[len(input)-1]
+			input = remove(input, len(input)-1)
+			var op2 = input[len(input)-1]
+			input = remove(input, len(input)-1)
+			var operator = input[i]
+			if contains(operators, operator) {
+				s = append(s, fmt.Sprintf("(%s %s %s)", op2, input[i], op1))
+			} else {
+				return "", fmt.Errorf("Unable to convert")
+			}
+		}
+	}
+
+	return s[len(s)-1], nil
 }
