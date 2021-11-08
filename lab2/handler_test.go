@@ -2,13 +2,10 @@ package lab2
 
 import (
 	"bytes"
+	"github.com/stretchr/testify/assert"
 	"io/ioutil"
 	"os"
 	"testing"
-
-	"github.com/stretchr/testify/assert"
-
-	lab2 "github.com/zavad4/go/tree/main/lab2"
 )
 
 func TestConsoleInputCorrect(t *testing.T) {
