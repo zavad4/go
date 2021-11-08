@@ -1,9 +1,0 @@
-name: GOCI
-on: [push,  pull_request]
-jobs:
-  Explore-GitHub-Actions:
-    runs-on: ubuntu-latest
-    steps:
-      - run: ls
-      - run: go build -v
-      - run: go test -v
