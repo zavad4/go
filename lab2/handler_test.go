@@ -37,7 +37,6 @@ func TestConsoleWrongChars(t *testing.T) {
 	}
 	err := handler.Compute()
 	write.Close()
-	//out, _ := ioutil.ReadAll(read)
 	os.Stdout = stdout
 	if assert.NotNil(t, err) {
 		assert.Equal(t, "Unable to convert", err.Error())
@@ -56,7 +55,6 @@ func TestConsoleWrongNumberArgs(t *testing.T) {
 	}
 	err := handler.Compute()
 	write.Close()
-	//out, _ := ioutil.ReadAll(read)
 	os.Stdout = stdout
 	if assert.NotNil(t, err) {
 		assert.Equal(t, "Unable to convert", err.Error())
