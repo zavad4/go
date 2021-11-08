@@ -12,7 +12,7 @@ func TestConsoleInputCorrect(t *testing.T) {
 	stdout := os.Stdout
 	read, write, _ := os.Pipe()
 	os.Stdout = write
-	handler := lab2.ComputeHandler{
+	handler := ComputeHandler{
 		Input:  bytes.NewBufferString("3 5 +"),
 		Output: write,
 	}
@@ -31,7 +31,7 @@ func TestConsoleWrongChars(t *testing.T) {
 	stdout := os.Stdout
 	_, write, _ := os.Pipe()
 	os.Stdout = write
-	handler := lab2.ComputeHandler{
+	handler := ComputeHandler{
 		Input:  bytes.NewBufferString("aaa aa"),
 		Output: write,
 	}
@@ -50,7 +50,7 @@ func TestConsoleWrongNumberArgs(t *testing.T) {
 	stdout := os.Stdout
 	_, write, _ := os.Pipe()
 	os.Stdout = write
-	handler := lab2.ComputeHandler{
+	handler := ComputeHandler{
 		Input:  bytes.NewBufferString("3 5 "),
 		Output: write,
 	}
