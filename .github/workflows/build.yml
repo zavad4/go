@@ -4,5 +4,7 @@ jobs:
   Explore-GitHub-Actions:
     runs-on: ubuntu-latest
     steps:
-    - run: go build -v ./.../lab2/
-    - run: go test -v ./.../lab2/
+      - run: cd ./.../
+      - run: ls
+      - run: go build -v
+      - run: go test -v
