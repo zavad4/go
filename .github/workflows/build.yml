@@ -4,6 +4,6 @@ jobs:
   Explore-GitHub-Actions:
     runs-on: ubuntu-latest
     steps:
-      - run: ls ./home/runner/work/go/go/lab2/
+      - run: ls /home/runner/work/go/go/
       - run: go build -v
       - run: go test -v
