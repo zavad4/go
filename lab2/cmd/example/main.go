@@ -29,6 +29,7 @@ func main() {
 					Input:  bytes.NewBufferString(*inConsole),
 					Output: outfile,
 				}
+				outfile.Close()
 			}
 		} else {
 			//err = "Error: Wrong input format."
@@ -46,6 +47,7 @@ func main() {
 					Input:  bytes.NewBufferString(*inConsole),
 					Output: outfile,
 				}
+				outfile.Close()
 			}
 		} else {
 			//err = "Error: Wrong input format."
