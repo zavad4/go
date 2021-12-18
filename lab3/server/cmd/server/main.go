@@ -8,7 +8,7 @@ import (
 	"os"
 	"os/signal"
 
-	"github.com/zavad4/go/tree/main/lab3/db"
+	"github.com/zavad4/go/tree/main/lab3/server/db"
 )
 
 var httpPortNumber = flag.Int("p", 8080, "HTTP port number")
