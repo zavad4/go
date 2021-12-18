@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"net/http"
 
-	"github.com/roman-mazur/chat-channels-example/server/channels"
+	"github.com/zavad4/go/tree/main/lab3/server/channels"
 )
 
 type HttpPortNumber int
