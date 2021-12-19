@@ -11,7 +11,7 @@ import (
 )
 
 func main() {
-	path := "./example.txt"
+	path := "./input.txt"
 	file := flag.String("f", path, "Input commands")
 	flag.Parse()
 
