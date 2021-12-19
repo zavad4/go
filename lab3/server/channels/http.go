@@ -5,7 +5,7 @@ import (
 	"log"
 	"net/http"
 
-	"github.com/roman-mazur/chat-channels-example/server/tools"
+	"github.com/zavad4/go/tree/main/lab3/server/tools"
 )
 
 // Channels HTTP handler.
