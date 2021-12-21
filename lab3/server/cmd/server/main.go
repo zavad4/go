@@ -11,12 +11,13 @@ import (
 	"github.com/zavad4/go/tree/main/lab3/server/db"
 )
 
-var httpPortNumber = flag.Int("p", 8080, "HTTP port number")
+var httpPortNumber = flag.Int("p", 5432, "HTTP port number")
 
 func NewDbConnection() (*sql.DB, error) {
 	conn := &db.Connection{
 		DbName:     "d4qgrhe3its6v7",
 		User:       "hcidzrejqbzxrj",
+		Password:   "5c8d70b2c65db9dc3b4635dfb8140585a6a8a33582a8fdc7e36b79496d587c2d",
 		Host:       "ec2-54-195-246-55.eu-west-1.compute.amazonaws.com",
 		DisableSSL: true,
 	}

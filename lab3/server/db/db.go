@@ -21,6 +21,7 @@ func (c *Connection) ConnectionURL() string {
 		User:   url.UserPassword(c.User, c.Password),
 		Path:   c.DbName,
 	}
+
 	if c.DisableSSL {
 		dbUrl.RawQuery = url.Values{
 			"sslmode": []string{"disable"},
