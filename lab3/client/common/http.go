@@ -9,7 +9,10 @@ import (
 	"github.com/zavad4/go/tree/main/lab3/client/dto"
 )
 
-// composing get request
+type Client struct {
+	BaseURL string
+}
+
 func (c *Client) Get(endpoint string) ([]dto.ForumsResponse, error) {
 	url := fmt.Sprintf("%s%s", c.BaseURL, endpoint)
 
@@ -35,7 +38,6 @@ func (c *Client) Get(endpoint string) ([]dto.ForumsResponse, error) {
 	return body, nil
 }
 
-// composing post request
 func (c *Client) Post(endpoint string, userInfo *dto.User) (int, error) {
 	url := fmt.Sprintf("%s%s", c.BaseURL, endpoint)
 	j, err := json.Marshal(userInfo)

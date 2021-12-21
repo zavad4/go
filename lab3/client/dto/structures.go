@@ -1,9 +1,5 @@
 package dto
 
-type Client struct {
-	BaseURL string
-}
-
 type Forum struct {
 	ForumId      int
 	ForumName    string
