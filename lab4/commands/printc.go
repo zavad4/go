@@ -3,7 +3,7 @@ package commands
 import (
 	"strings"
 
-	"github.com/Scopics/architecture-lab-4/engine"
+	"github.com/zavad4/go/lab4/engine"
 )
 
 type printc struct {
