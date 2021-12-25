@@ -6,6 +6,4 @@ print sometext somenewtext
 printc 10 z
 printc 4 lab
 printc 0 text
-printc text 2
 printc 10 1
-dosomethingelse

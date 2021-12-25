@@ -1,4 +1,4 @@
-package channels
+package interests
 
 import (
 	"encoding/json"
@@ -15,33 +15,37 @@ type HttpHandlerFunc http.HandlerFunc
 func HttpHandler(store *Store) HttpHandlerFunc {
 	return func(rw http.ResponseWriter, r *http.Request) {
 		if r.Method == "GET" {
-			handleListChannels(store, rw)
+			handleListInterests(store, rw)
 		} else if r.Method == "POST" {
-			handleChannelCreate(r, rw, store)
+			handleInterestCreate(r, rw, store)
 		} else {
 			rw.WriteHeader(http.StatusMethodNotAllowed)
 		}
 	}
 }
 
-func handleChannelCreate(r *http.Request, rw http.ResponseWriter, store *Store) {
-	var c Channel
-	if err := json.NewDecoder(r.Body).Decode(&c); err != nil {
-		log.Printf("Error decoding channel input: %s", err)
+func handleInterestCreate(r *http.Request, rw http.ResponseWriter, store *Store) {
+	var i Interest
+	if err := json.NewDecoder(r.Body).Decode(&i); err != nil {
+		log.Printf("Error decoding interest input: %s", err)
 		tools.WriteJsonBadRequest(rw, "bad JSON payload")
 		return
 	}
-	err := store.CreateChannel(c.Name)
+	if len(i.InterestName) < 1 || i.ForumId < 1 {
+		tools.WriteJsonBadRequest(rw, "interest name or forum ID is not provided")
+		return
+	}
+	err := store.CreateInterest(i.InterestName, i.ForumId)
 	if err == nil {
-		tools.WriteJsonOk(rw, &c)
+		tools.WriteJsonOk(rw, &i)
 	} else {
 		log.Printf("Error inserting record: %s", err)
 		tools.WriteJsonInternalError(rw)
 	}
 }
 
-func handleListChannels(store *Store, rw http.ResponseWriter) {
-	res, err := store.ListChannels()
+func handleListInterests(store *Store, rw http.ResponseWriter) {
+	res, err := store.ListInterests()
 	if err != nil {
 		log.Printf("Error making query to the db: %s", err)
 		tools.WriteJsonInternalError(rw)
