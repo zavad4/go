@@ -2,22 +2,24 @@ package commands
 
 import (
 	"fmt"
+	"strings"
 	"testing"
-	"strconv"
 
 	"github.com/zavad4/go/lab4/engine"
 )
 
-var cmd engine.Command
+var constInput = "printc"
+var command engine.Command
 
-func BenchmarkParse(b *testing.B) {
-	for i := 1; i <= 20; i++ {
-		b.Run(fmt.Sprintf("%d-length", i*1000000), func(b *testing.B) {
-			for j:=1; j<=1000; j++{
-				stringNum := strconv.Itoa(i * 1000000)
-			cmd = Parse("printc " + stringNum + " A")
-			}
-			
+func BenchmarkCount(b *testing.B) {
+	length := 1
+	for i := 0; i < 27; i++ {
+		length = 2 * length
+		input := constInput
+		input += strings.Repeat("A", length)
+
+		b.Run(fmt.Sprintf("len=%d", length), func(b *testing.B) {
+			command = Parse(input)
 		})
 	}
 }
